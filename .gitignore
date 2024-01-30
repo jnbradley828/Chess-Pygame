@@ -1,0 +1,6 @@
+/venv/
+/build/
+/build.zip
+/.DS_Store
+/.idea/
+/__pycache__/
