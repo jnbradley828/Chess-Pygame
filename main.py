@@ -154,6 +154,9 @@ async def main():
                 moveList.remove('')
             except:
                 pass
+            if game.resultType is not None:
+                moveList.append(f'{game.scoreWhite}-{game.scoreBlack} by')
+                moveList.append(f'{game.resultType}')
             if len(moveList) > 28:
                 endIndex = 28 - scrollPosition
                 moveListDisplayed = moveList[-scrollPosition:endIndex] if scrollPosition >= 29 else moveList[-scrollPosition:]
@@ -177,13 +180,12 @@ async def main():
 
         for event in pygame.event.get():
             if game.resultType is not None:
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                else:
+                if event.type != pygame.QUIT:
                     continue
+                else: quit()
 
             if event.type == pygame.QUIT:
-                pygame.quit()
+                quit()
 
             elif colorPOV is None:
                 if event.type == pygame.MOUSEBUTTONDOWN:
